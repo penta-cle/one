@@ -46,7 +46,6 @@
 		--no-ff参数（普通模式，查看分支合并历史），表示禁用Fast forward： git merge --no-ff -m "merge with no-ff" dev
 		合并后，我们用 git log 看看分支历史： git log --graph --pretty=oneline --abbrev-commit
 bug分支修复：
-
 	当你在dev分支上正在进行一个新项目，而在你的master分支上出现了一个bug（101bug）此时你需要修复该分支上的bug。首先你需要使用命令：git stash 进行储藏正在进行的dev分支上的工作（此时dev工作已被隐藏）。随后切换到master分支（git checkout master），创建master临时修复分支（git checkout -b issue-101）修复完成后，切换到master分支，并完成合并(git merge --no-ff -m "merged bug fix 101" issue-101)，最后删除issue-101分支
 		恢复：一是用 git stash apply 恢复，但是恢复后，stash内容并不删除，你需要用 git stash drop 来删除；
 			 另一种方式是用 git stash pop ，恢复的同时把stash内容也删了。
