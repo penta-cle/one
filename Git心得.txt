@@ -1,4 +1,4 @@
-
+﻿
 状态查询：
 	git status 告诉你有文件被修改过，用 git diff 可以查看修改内容（只可查看add未提交前的修改）。
 版本回退，切换：
@@ -15,7 +15,8 @@
 	最好使用 git reset --hard <commit_id> 进行版本回退
 删除文件：
 	命令：git rm <filename> -> git commit -m "(注释)"
-	找回： git checkout --<filename> （前提是已经被提交commit到版本库的文件，防止误删）	
+	找回： git checkout --<filename> （前提是已经被提交commit到版本库的文件，防止误删）
+	删除swap文件：rm -f （后缀.swap的文件名）	
 添加远程库：
 	要关联一个远程库，使用命令git remote add origin git@github.com:penta-cle/文件名.git；
 	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
