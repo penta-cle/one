@@ -28,6 +28,7 @@
 远程库克隆：
 	在GitHub中创建一个文件夹之后 使用 clone 
 		命令：git clone git@github.com:penta-cle/文件名.git
+	查看远程库： git remote -v(详细信息)	
 分支（好处是各个分支之间可以进行修改互不干扰）：
 	查看分支：git branch
 	创建分支：git branch <name>
@@ -49,3 +50,6 @@ bug分支修复：
 	当你在dev分支上正在进行一个新项目，而在你的master分支上出现了一个bug（101bug）此时你需要修复该分支上的bug。首先你需要使用命令：git stash 进行储藏正在进行的dev分支上的工作（此时dev工作已被隐藏）。随后切换到master分支（git checkout master），创建master临时修复分支（git checkout -b issue-101）修复完成后，切换到master分支，并完成合并(git merge --no-ff -m "merged bug fix 101" issue-101)，最后删除issue-101分支
 		恢复：一是用 git stash apply 恢复，但是恢复后，stash内容并不删除，你需要用 git stash drop 来删除；
 			 另一种方式是用 git stash pop ，恢复的同时把stash内容也删了。
+多人协作： 
+	在已将新的shh添加到GitHub中后
+	假设两人同时在dev分支上进行开发，当同伴对远程分支origin/dev提交修改之后，你也准备提交修改这时你需要先进行 git pull 操作将远程库中最新的文件下载到本地（如果 pull 操作失败，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接： git branch --set-upstream-to=origin/<分支名> dev ），在本地进行 git merge 合并操作（有冲突时，解决冲突）随后重新 git push origin <分支名> 操作。 ps：建立本地分支和远程分支的关联，使用 git branch --set-upstream branch-name origin/branch-name
