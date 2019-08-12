@@ -9,14 +9,18 @@
 	该文件夹即是工作区 隐藏目录.git即是版本库（repository）
 	文件往Git版本库里添加的时候，是分两步执行的：
 		第一步是用 git add 把文件添加进去，实际上就是把文件修改添加到暂存区；
-		第二步是用 git commit 提交更改，实际上就是把暂存区的所有内容提交到当前分支（自动创建的 master 分支，包含一个一个指针 HEAD ）。
+		第二步是用 git commit -m "添加说明" 提交更改，实际上就是把暂存区的所有内容提交到当前分支（自动创建的 master 分支，包含一个一个指针 HEAD ）。
 撤销修改：
 	改错了东西并add到了暂存区可以使用 命令 git reset HEAD <file> 可以把暂存区的修改撤销掉（unstage），重新放回工作区(只是最新的内容)
 	最好使用 git reset --hard <commit_id> 进行版本回退
 删除文件：
 	命令：git rm <filename> -> git commit -m "(注释)"
 	找回： git checkout --<filename> （前提是已经被提交commit到版本库的文件，防止误删）
-	删除swap文件：rm -f （后缀.swap的文件名）	
+	删除swap文件：rm -f （后缀.swap的文件名）
+链接远程库：
+	第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa（私钥）和id_rsa.pub（公共秘钥）这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key： $ ssh-keygen -t rsa -C "youremail@example.com"
+	第2步：登录GitHub->setting->SHH and GPC keys->new SSH key
+		   添加SHH公共秘钥（进行操作的钥匙）		
 添加远程库：
 	要关联一个远程库，使用命令git remote add origin git@github.com:penta-cle/文件名.git；
 	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
