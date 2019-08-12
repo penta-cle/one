@@ -52,4 +52,14 @@ bug分支修复：
 			 另一种方式是用 git stash pop ，恢复的同时把stash内容也删了。
 多人协作： 
 	在已将新的shh添加到GitHub中后
-	假设两人同时在dev分支上进行开发，当同伴对远程分支origin/dev提交修改之后，你也准备提交修改这时你需要先进行 git pull 操作将远程库中最新的文件下载到本地（如果 pull 操作失败，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接： git branch --set-upstream-to=origin/<分支名> dev ），在本地进行 git merge 合并操作（有冲突时，解决冲突）随后重新 git push origin <分支名> 操作。 ps：建立本地分支和远程分支的关联，使用 git branch --set-upstream branch-name origin/branch-name
+	假设两人同时在dev分支上进行开发，当同伴对远程分支origin/dev提交修改之后，你也准备提交修改这时你需要先进行 git pull 操作将远程库中最新的文件下载到本地（如果 pull 操作失败，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接： git branch --set-upstream-to=origin/<分支名> dev ），在本地进行 git merge 合并操作（有冲突时，解决冲突）随后重新 git push origin <分支名> 操作。 ps：建立本地分支和远程分支的关联，使用 git branch --set-upstream branch-name origin/branch-name	
+tag标签：
+		使用：
+			切换到需要的分支上使用： git tag <tag_name> (默认打在最新的commit上，如果要准确打到某个记录中首先查询：git log --pretty=oneline --abbrev-commit ，随后使用： git tag v0.9 <commit_id> )
+			查看标签（详细信息）： git tag （git show <tag_name>）
+				ps:创建带有说明的标签： git tag -a <tag_name> -m "说明信息" <commit_id>	
+		删除：git tag -d <tag_name>
+		推送（同步到远程库）：git push origin <tag_name>（--tags(推送本地全部标签)）
+			如果标签已经推送到远程：
+									1.删除本地： git tag -d <tag_name>
+									2.远程删除： git push origin :refs/tags/<tag_name>
