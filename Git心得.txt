@@ -27,8 +27,9 @@
 	要关联一个远程库，使用命令git remote add origin git@github.com:penta-cle/文件名.git；
 	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
 	此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+	GitHub中如果新建文件夹之后添加reademe.txt文件的话，本地上传会出现冲突，原因是因为commit历史不同，此时使用git pull origin master --allow-unrelated-histories进行拉取文件进行合并
 删除远程库：
-		 git remote rm <远程库名>
+		 git remote rm origin
 远程库克隆：
 	在GitHub中创建一个文件夹之后 使用 clone 
 		命令：git clone git@github.com:penta-cle/文件名.git
